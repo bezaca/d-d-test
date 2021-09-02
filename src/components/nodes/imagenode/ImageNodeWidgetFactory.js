@@ -1,7 +1,7 @@
 import * as RJD from '../../../../lib/main';
 import { ImageNodeWidgetFactory } from './ImageNodeWidget';
 
-export class ImageNodeNodeWidgetFactory extends RJD.NodeWidgetFactory{
+export class ImageNodeNodeWidgetFactory extends RJD.NodeWidgetFactory {
   constructor() {
     super('imagenode');
   }

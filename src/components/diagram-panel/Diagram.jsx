@@ -5,6 +5,8 @@ import _ from 'lodash';
 
 import { engine } from './engine';
 import { ImageNodeModel } from '../nodes/imagenode/ImageNodeModel';
+import { SvgNodeModel } from '../nodes/svgnode/SvgNodeModel';
+import { TextNodeModel } from '../nodes/textnode/TextNodeModel';
 
 
 // Setup the diagram model
@@ -21,26 +23,51 @@ const target = {
 
         let node;
 
-        if (item.type === 'imagenode') {
-            node = new ImageNodeModel('Image Node', 'rgb(124, 28, 120)', {
-                title: '',
-                body: '',
-                video: {
-                    url: ''
-                },
-                image: {
-                    src: '',
-                    alt: ''
-                },
-                info: {
+
+        switch (item.type) {
+            case 'imagenode':
+                node = new ImageNodeModel('Image Node', 'rgb(124, 28, 120)', {
                     title: '',
-                    body: ''
-                }
-            });
+                    body: '',
+                    video: {
+                        url: ''
+                    },
+                    image: {
+                        src: '',
+                        alt: ''
+                    },
+                    info: {
+                        title: '',
+                        body: ''
+                    }
+                });
+                break;
+            
+            case 'ec2node':
+                node = new SvgNodeModel('EC2', item.type)
+                break;
+            
+            case 'rdsnode':
+                node = new SvgNodeModel('RDS', item.type)
+                break;
+            
+            case 'elasticnode':
+                node = new SvgNodeModel('Elastic Load Balancing', item.type)
+                break;
+
+            case 'textnode':
+                node = new TextNodeModel('Text Node', {
+                    body : ''
+                });
+                break;
+                
+            default:
+                break;
         }
 
         node.x = x;
         node.y = y;
+
 
         // clear previously selected item(s)
         diagramModel.clearSelection();

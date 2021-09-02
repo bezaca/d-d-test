@@ -4,29 +4,44 @@
   display: flex;
   cursor: move;
   overflow: hidden;
-  background-color: #fff !important;
+  background-color: #000000 !important;
   background-size: 50px 50px;
-  background-image:
-          linear-gradient(0deg, transparent 24%, rgba(100, 100, 100, 0.05) 25%,
-          rgba(100, 100, 100, 0.05) 26%, transparent 27%, transparent 74%,
-          rgba(100, 100, 100, 0.05) 75%, rgba(100, 100, 100, 0.05) 76%,
-          transparent 77%, transparent),
-          linear-gradient(90deg, transparent 24%, rgba(100, 100, 100, 0.05) 25%,
-          rgba(100, 100, 100, 0.05) 26%, transparent 27%, transparent 74%,
-          rgba(100, 100, 100, 0.05) 75%,
-          rgba(100, 100, 100, 0.05) 76%, transparent 77%, transparent);
+  background-image: linear-gradient(
+      0deg,
+      transparent 24%,
+      rgba(100, 100, 100, 0.05) 25%,
+      rgba(100, 100, 100, 0.05) 26%,
+      transparent 27%,
+      transparent 74%,
+      rgba(100, 100, 100, 0.05) 75%,
+      rgba(100, 100, 100, 0.05) 76%,
+      transparent 77%,
+      transparent
+    ),
+    linear-gradient(
+      90deg,
+      transparent 24%,
+      rgba(100, 100, 100, 0.05) 25%,
+      rgba(100, 100, 100, 0.05) 26%,
+      transparent 27%,
+      transparent 74%,
+      rgba(100, 100, 100, 0.05) 75%,
+      rgba(100, 100, 100, 0.05) 76%,
+      transparent 77%,
+      transparent
+    );
 
   .point {
-    fill: rgba(white,0.5);
+    fill: rgba(white, 0.5);
     &.selected {
-      fill: rgb(0,192,255);
+      fill: rgb(0, 192, 255);
     }
   }
 
   .selector {
     position: absolute;
-    background-color: rgba(0,192,255,0.2);
-    border: solid 2px rgb(0,192,255);
+    background-color: rgba(0, 192, 255, 0.2);
+    border: solid 2px rgb(0, 192, 255);
   }
 
   svg {
@@ -38,10 +53,10 @@
   }
 
   .node-view {
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     position: absolute;
     pointer-events: none;
     transform-origin: 0 0;
@@ -51,15 +66,15 @@
   .node {
     position: absolute;
     -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
     user-select: none;
     cursor: move;
     pointer-events: all;
 
     &.selected {
-      >* {
-        border-color:rgb(0,192,255) !important;
-        -webkit-filter: drop-shadow( 0 0 20px rgba(0,192,255,0.5));
+      > * {
+        border-color: rgb(0, 192, 255) !important;
+        -webkit-filter: drop-shadow(0 0 20px rgba(0, 192, 255, 0.5));
       }
     }
   }
@@ -73,13 +88,13 @@
     }
   }
 
-  path{
-    fill:none;
-    pointer-events:all;
+  path {
+    fill: none;
+    pointer-events: all;
 
     &.selected {
-      stroke: rgb(0,192,255) !important;
-      stroke-dasharray: 10,2;
+      stroke: rgb(0, 192, 255) !important;
+      stroke-dasharray: 10, 2;
       animation: dash 1s linear infinite;
     }
   }
@@ -87,27 +102,142 @@
   .port {
     width: 15px;
     height: 15px;
-    background: rgba(white,0.1);
-    &:hover,&.selected {
-      background: rgb(192,255,0);
+    background: white;
+    &:hover,
+    &.selected {
+      background: rgb(192, 255, 0);
+    }
+  }
+
+  .text-node {
+    background: transparent;
+    color: #ffffff;
+    overflow: hidden;
+    text-align: center;
+
+    input {
+      background: transparent;
+      outline: 0;
+      border: 0;
+      color: white;
+      text-align: center;
+      font-size: 3rem;
+      width: 300px;
+    }
+
+    .close-button {
+      text-align: right;
+      margin-right: 9px;
+      margin-bottom: 10px;
+      font-size: 1.5rem;
+      color: transparent;
+
+      &:hover {
+        color: white;
+      }
+    }
+
+    .text-container {
+      width: 400px;
+      height: 300px;
+    }
+
+    .wrapper-text {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+
+      .in,
+      .out {
+        position: relative;
+        top: 50%;
+        -webkit-transform: translateY(50%);
+        -ms-transform: translateY(50%);
+        transform: translateY(50%);
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+    }
+  }
+
+  .svg-node {
+    background: transparent;
+    color: #ffffff;
+    overflow: visible;
+    padding: 1rem;
+    font-size: 2rem;
+    text-align: center;
+
+    .close-button {
+      text-align: right;
+      margin-right: 9px;
+      margin-bottom: 10px;
+      font-size: 1.5rem;
+      color: transparent;
+
+      &:hover {
+        color: white;
+      }
+    }
+    .svg-container {
+      width: 200px;
+      all: revert;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .wrapper-svg {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+
+      .in,
+      .out {
+        position: relative;
+        top: 50%;
+        -webkit-transform: translateY(50%);
+        -ms-transform: translateY(50%);
+        transform: translateY(50%);
+        margin-left: 20px;
+        margin-right: 20px;
+      }
+    }
+
+    .port {
+      background: white;
+      width: 15px;
+      height: 15px;
+
+      &:hover,
+      &.selected {
+        background: rgb(192, 255, 0);
+      }
+    }
+
+    .title {
+      margin-top: 10px;
     }
   }
 
   .basic-node {
-    background-color: rgb(30,30,30);
+    background-color: rgb(30, 30, 30);
     border-radius: 5px;
-    font-family:Arial;
+    font-family: Arial;
     color: white;
     border: solid 2px black;
     overflow: visible;
     font-size: 12px;
-    box-shadow: 0 0 10px rgba(black,0.5);
+    box-shadow: 0 0 10px rgba(black, 0.5);
 
     .title {
-      background: rgba(black,0.3);
+      background: rgba(black, 0.3);
       display: flex;
       white-space: nowrap;
-      >* {
+      > * {
         align-self: center;
       }
       .fa {
@@ -116,7 +246,7 @@
         cursor: pointer;
 
         &:hover {
-          opacity: 1.0;
+          opacity: 1;
         }
       }
       .name {
@@ -127,16 +257,18 @@
 
     .ports {
       display: flex;
-      background-image: linear-gradient(rgba(black,0.1),rgba(black,0.2));
-      .in, .out {
+      background-image: linear-gradient(rgba(black, 0.1), rgba(black, 0.2));
+      .in,
+      .out {
         flex-grow: 1;
         display: flex;
         flex-direction: column;
       }
-      .in-port, .out-port {
+      .in-port,
+      .out-port {
         display: flex;
         margin-top: 1px;
-        >* {
+        > * {
           align-self: center;
         }
         .name {

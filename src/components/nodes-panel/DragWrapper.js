@@ -2,16 +2,16 @@ import React from 'react';
 import { DragSource } from 'react-dnd';
 
 const source = {
-    beginDrag(props) {
-        return props;
-    }
+  beginDrag(props) {
+    return props;
+  }
 };
 
 function collect(connect, monitor) {
-    return {
-        connectDragSource: connect.dragSource(),
-        isDragging: monitor.isDragging()
-    }
+  return {
+    connectDragSource: connect.dragSource(),
+    isDragging: monitor.isDragging()
+  }
 }
 
 class DragWrapper extends React.Component {

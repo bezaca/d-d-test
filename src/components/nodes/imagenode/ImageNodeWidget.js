@@ -45,10 +45,11 @@ export class ImageNodeWidget extends React.Component {
     }
 
     return (
+
       <div className='basic-node' style={style}>
         <div className='title'>
           <div className='name'>
-            image
+            {name}
           </div>
           {!displayOnly ? <div className='fa fa-close' onClick={this.onRemove.bind(this)} /> : null}
         </div>
@@ -61,6 +62,7 @@ export class ImageNodeWidget extends React.Component {
           </div>
         </div>
       </div>
+
     );
   }
 }
